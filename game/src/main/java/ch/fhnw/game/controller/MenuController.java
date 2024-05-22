@@ -1,14 +1,14 @@
-package ch.fhnw.pizza.controller;
-
-import ch.fhnw.pizza.business.service.MenuService;
-import ch.fhnw.pizza.data.domain.Menu;
-import ch.fhnw.pizza.data.domain.Pizza;
+package ch.fhnw.game.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import ch.fhnw.game.business.service.MenuService;
+import ch.fhnw.game.data.domain.Menu;
+import ch.fhnw.game.data.domain.Pizza;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+   
     @GetMapping(path="/pizzas/{id}", produces = "application/json")
     public ResponseEntity getPizza(@PathVariable Long id) {
         try{

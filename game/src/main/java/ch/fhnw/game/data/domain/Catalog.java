@@ -1,22 +1,25 @@
-package ch.fhnw.pizza.data.domain;
+package ch.fhnw.game.data.domain;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Menu {
+public class Catalog {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @JsonIgnore
     private Long id;
 
-    @OneToMany(mappedBy = "menu")
-    private List<Pizza> pizzaList;
+    @OneToMany(mappedBy = "catalog")
+    private List<Game> gameList;
 
     private String currentOffer;
 
@@ -28,12 +31,12 @@ public class Menu {
         this.id = id;
     }
 
-    public List<Pizza> getPizzaList() {
-        return pizzaList;
+    public List<Game> getGameList() {
+        return gameList;
     }
 
-    public void setPizzaList(List<Pizza> pizzaList) {
-        this.pizzaList = pizzaList;
+    public void setGameList(List<Game> gameList) {
+        this.gameList = gameList;
     }
 
     public String getCurrentOffer() {
@@ -43,7 +46,4 @@ public class Menu {
     public void setCurrentOffer(String currentOffer) {
         this.currentOffer = currentOffer;
     }
-
-    
-    
 }

@@ -1,1 +1,4 @@
 .vscode/settings.json
+game/mvnw
+game/mvnw.cmd
+game/.mvn/wrapper/maven-wrapper.jar
