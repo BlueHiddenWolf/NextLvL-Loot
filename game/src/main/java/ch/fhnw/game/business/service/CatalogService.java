@@ -8,14 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.fhnw.game.data.domain.Catalog;
+import ch.fhnw.game.data.domain.Console;
 import ch.fhnw.game.data.domain.Game;
 import ch.fhnw.game.data.repository.GameRepository;
+import ch.fhnw.game.data.repository.ConsoleRepository;
 
 @Service
 public class CatalogService {
 
     @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    private ConsoleRepository consoleRepository;
 
     public Game findGameById(Long id) {
         try {
@@ -68,6 +73,57 @@ public class CatalogService {
         }
     }
 
+    public List<Console> findAllConsoles() {
+        return consoleRepository.findAll();
+    }
+
+    public Console addConsole(Console console) throws Exception {
+        if (console.getModel() != null && consoleRepository.findByModel(console.getModel()) == null) {
+            return consoleRepository.save(console);
+        } else {
+            throw new Exception("Console already exists or model is null");
+        }
+    }
+
+    public Console updateConsole(Long id, Console console) throws Exception {
+        Optional<Console> consoleToUpdate = consoleRepository.findById(id);
+        if (consoleToUpdate.isPresent()) {
+            Console updatedConsole = consoleToUpdate.get();
+            if (console.getModel() != null) updatedConsole.setModel(console.getModel());
+            if (console.getManufacturer() != null) updatedConsole.setManufacturer(console.getManufacturer());
+            if (console.getPrice() != null) updatedConsole.setPrice(console.getPrice());
+            if (console.getImage() != null) updatedConsole.setImage(console.getImage()); // Assuming consoles have images
+            return consoleRepository.save(updatedConsole);
+        } else {
+            throw new Exception("Console not found");
+        }
+    }
+
+    public Console findConsoleById(Long id) throws Exception {
+        Optional<Console> console = consoleRepository.findById(id);
+        if (console.isPresent()) {
+            return console.get();
+        } else {
+            throw new Exception("Console with id " + id + " not found");
+        }
+    }
+
+    public void deleteConsole(Long id) throws Exception {
+        if (consoleRepository.existsById(id)) {
+            consoleRepository.deleteById(id);
+        } else {
+            throw new Exception("Console not found");
+        }
+    }
+
+    public List<Console> findConsolesByManufacturer(String manufacturer) {
+        return consoleRepository.findByManufacturer(manufacturer);
+    }
+
+    public List<Console> findConsolesByPriceRange(Double minPrice, Double maxPrice) {
+        return consoleRepository.findByPriceBetween(minPrice, maxPrice);
+    }
+
     // Business Logic to get current offer according to the category of the games
     private String getCurrentOffer(String category) {
         String currentOffer = "No special offer for your selected category. Do check back again.";
@@ -87,6 +143,7 @@ public class CatalogService {
         return catalog;
     }
 
+
     // New business logic
 
     // Search games by developer
@@ -99,17 +156,15 @@ public class CatalogService {
         return gameRepository.findByPriceBetween(minPrice, maxPrice);
     }
 
-    // Get top rated games
-    /*public List<Game> getTopRatedGames() {
-        return gameRepository.findAll().stream()
-                .filter(game -> game.getRating() != null)
-                .sorted((g1, g2) -> g2.getRating().compareTo(g1.getRating()))
-                .limit(10)
-                .collect(Collectors.toList());
-    }
+    public Catalog getBundleOffers(String category) {
+        List<Game> games = gameRepository.findByCategory(category);
+        List<Console> consoles = consoleRepository.findAll();  // This fetches all consoles, adjust if needed
+        String offerDetails = "Special bundle offer: Buy any game with a console for extra savings!";
 
-    // Get games on special offer
-    public List<Game> getGamesOnSpecialOffer() {
-        return gameRepository.findBySpecialOfferTrue();
-    } */
+        Catalog catalog = new Catalog();
+        catalog.setGameList(games);
+        catalog.setConsoleList(consoles);
+        catalog.setCurrentOffer(offerDetails);
+        return catalog;
+    }
 }

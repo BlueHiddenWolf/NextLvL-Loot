@@ -34,6 +34,9 @@ public class Game {
     @Column(name = "category")
     private String category;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "specialOffer")
     private Boolean specialOffer;
 
@@ -94,6 +97,14 @@ public class Game {
     
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Boolean getSpecialOffer() {

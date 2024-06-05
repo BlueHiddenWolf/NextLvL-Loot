@@ -21,6 +21,9 @@ public class Catalog {
     @OneToMany(mappedBy = "catalog")
     private List<Game> gameList;
 
+    @OneToMany(mappedBy = "catalog") 
+    private List<Console> consoleList;
+
     private String currentOffer;
 
     public Long getId() {
@@ -37,6 +40,14 @@ public class Catalog {
 
     public void setGameList(List<Game> gameList) {
         this.gameList = gameList;
+    }
+
+    public List<Console> getConsoleList() {
+        return consoleList;
+    }
+
+    public void setConsoleList(List<Console> consoleList) {
+        this.consoleList = consoleList;
     }
 
     public String getCurrentOffer() {
