@@ -7,6 +7,7 @@ import ch.fhnw.game.data.domain.Accessory;
 
 @Repository
 public interface AccessoryRepository extends JpaRepository<Accessory, Long> {
+    
     // Find an accessory by its type
     Accessory findByType(String type);
 
@@ -16,6 +17,4 @@ public interface AccessoryRepository extends JpaRepository<Accessory, Long> {
     // Find accessories within a specific price range
     List<Accessory> findByPriceBetween(Double minPrice, Double maxPrice);
 
-    // Additional queries can be added here as needed, for example:
-    // List<Accessory> findByCompatibility(String compatibility);
 }

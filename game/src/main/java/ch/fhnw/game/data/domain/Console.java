@@ -21,9 +21,15 @@ public class Console {
 
     @Column(name = "price")
     private Double price;
+    
+    @Column(name = "discountedPrice")
+    private Double discountedPrice;
 
     @Column(name = "image")
     private String image;
+
+    @Column(name = "is_on_special")
+    private boolean isOnSpecial;
 
     @ManyToOne
     private Catalog catalog;
@@ -76,5 +82,22 @@ public class Console {
     public void setCatalog(Catalog catalog) {
         this.catalog = catalog;
     }
+
+    public boolean getIsOnSpecial() {
+        return isOnSpecial;
+    }
+
+    public void setIsOnSpecial(boolean isOnSpecial) {
+        this.isOnSpecial = isOnSpecial;
+    }
+
+    public Double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(Double discountedPrice) {
+        this.discountedPrice = discountedPrice;
+    }
+
 }
 

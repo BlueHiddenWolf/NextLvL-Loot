@@ -7,6 +7,9 @@ import ch.fhnw.game.data.domain.Console;
 
 @Repository
 public interface ConsoleRepository extends JpaRepository<Console, Long> {
+
+    List<Console> findByIsOnSpecial(boolean isOnSpecial);
+  
     // Find a console by its model
     Console findByModel(String model);
 
@@ -16,7 +19,4 @@ public interface ConsoleRepository extends JpaRepository<Console, Long> {
     // Find consoles within a specific price range
     List<Console> findByPriceBetween(Double minPrice, Double maxPrice);
 
-    // If consoles have categories or special offers, you can include methods like these:
-    // List<Console> findByCategory(String category);
-    // List<Console> findBySpecialOfferTrue();
 }

@@ -3,10 +3,12 @@ package ch.fhnw.game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.game.business.service.CatalogService;
+import ch.fhnw.game.business.service.SpecialOfferService;
 import ch.fhnw.game.data.domain.Game;
 import ch.fhnw.game.data.domain.Accessory;
 import ch.fhnw.game.data.domain.Console;
@@ -15,11 +17,15 @@ import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
 @RestController
+@EnableScheduling
 @Hidden // Hide this controller from the Swagger UI
 public class PizzaApplication {
 
 	@Autowired
     private CatalogService catalogService;
+
+    @Autowired
+    private SpecialOfferService specialOfferService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PizzaApplication.class, args);
@@ -31,6 +37,7 @@ public class PizzaApplication {
 	// To resolve the error, delete the file and restart the application
 	@PostConstruct
 	private void initPlaceholderData() throws Exception {
+
 		// Action-Adventure
         Game game = new Game();
         game.setTitle("The Legend of Zelda: Breath of the Wild");
@@ -162,30 +169,30 @@ public class PizzaApplication {
         accessory.setType("Nintendo Switch Dock");
         accessory.setManufacturer("Nintendo");
         accessory.setPrice(89.99);
-        accessory.setImage("https://example.com/path/to/nintendo_switch_dock_image.jpg");
+        accessory.setImage("https://media.gamestop.com/i/gamestop/10147700/Nintendo-Switch-Dock-Set?$pdp$");
         catalogService.addAccessory(accessory);
 
         accessory = new Accessory();
-        accessory.setType("DualShock Charging Station");
+        accessory.setType("DualShock Controller");
         accessory.setManufacturer("Sony");
-        accessory.setPrice(29.99);
-        accessory.setImage("https://example.com/path/to/dualshock_charging_station_image.jpg");
+        accessory.setPrice(59.99);
+        accessory.setImage("https://m.media-amazon.com/images/I/71Liv-br3iL._AC_UF894,1000_QL80_.jpg");
         catalogService.addAccessory(accessory);
 
         accessory = new Accessory();
         accessory.setType("Xbox Wireless Controller");
         accessory.setManufacturer("Microsoft");
         accessory.setPrice(59.99);
-        accessory.setImage("https://example.com/path/to/xbox_wireless_controller_image.jpg");
+        accessory.setImage("https://m.media-amazon.com/images/I/51ilQN1AEnL._AC_UF894,1000_QL80_.jpg");
         catalogService.addAccessory(accessory);
 
         accessory = new Accessory();
         accessory.setType("PlayStation VR Headset");
         accessory.setManufacturer("Sony");
         accessory.setPrice(199.99);
-        accessory.setImage("https://example.com/path/to/playstation_vr_headset_image.jpg");
+        accessory.setImage("https://m.media-amazon.com/images/I/71N0gyzmPZL._AC_UF894,1000_QL80_.jpg");
         catalogService.addAccessory(accessory);
 
     }
-
+    
 }

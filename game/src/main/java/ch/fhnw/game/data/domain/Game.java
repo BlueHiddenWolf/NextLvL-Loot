@@ -31,6 +31,9 @@ public class Game {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "discountedPrice")
+    private Double discountedPrice;
+
     @Column(name = "category")
     private String category;
 
@@ -39,6 +42,9 @@ public class Game {
 
     @Column(name = "specialOffer")
     private Boolean specialOffer;
+
+    @Column(name = "is_on_special")
+    private boolean isOnSpecial;
 
     @ManyToOne
     private Catalog catalog;
@@ -113,5 +119,21 @@ public class Game {
     
     public void setSpecialOffer(Boolean specialOffer) {
         this.specialOffer = specialOffer;
+    }
+
+    public boolean getIsOnSpecial() {
+        return isOnSpecial;
+    }
+
+    public void setIsOnSpecial(boolean isOnSpecial) {
+        this.isOnSpecial = isOnSpecial;
+    }
+
+    public Double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(Double discountedPrice) {
+        this.discountedPrice = discountedPrice;
     }
 }

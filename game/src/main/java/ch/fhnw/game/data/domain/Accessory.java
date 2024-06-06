@@ -76,4 +76,5 @@ public class Accessory {
     public void setCatalog(Catalog catalog) {
         this.catalog = catalog;
     }
+
 }

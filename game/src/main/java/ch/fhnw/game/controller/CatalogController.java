@@ -7,12 +7,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import ch.fhnw.game.business.service.CatalogService;
+import ch.fhnw.game.business.service.SpecialOfferService;
 import ch.fhnw.game.data.domain.Catalog;
 import ch.fhnw.game.data.domain.Game;
+import ch.fhnw.game.data.repository.AccessoryRepository;
+import ch.fhnw.game.data.repository.ConsoleRepository;
+import ch.fhnw.game.data.repository.GameRepository;
 import ch.fhnw.game.data.domain.Console;
 import ch.fhnw.game.data.domain.Accessory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path="/catalog")
@@ -20,6 +28,16 @@ public class CatalogController {
 
     @Autowired
     private CatalogService catalogService;
+
+    @Autowired
+    private SpecialOfferService specialOfferService;
+
+    @Autowired
+    private GameRepository gameRepository;
+    @Autowired
+    private ConsoleRepository consoleRepository;
+    @Autowired
+    private AccessoryRepository accessoryRepository;
 
     @GetMapping(path="/games/{id}", produces = "application/json")
     public ResponseEntity getGame(@PathVariable Long id) {
@@ -170,5 +188,48 @@ public class CatalogController {
         Catalog catalog = catalogService.getBundleOffers(category);
         return ResponseEntity.ok(catalog);
     }
+
+    @GetMapping(path="/special-offers", produces = "application/json")
+    public ResponseEntity<Map<String, Object>> getCurrentSpecialOffers() {
+        List<Game> specialGames = gameRepository.findByIsOnSpecial(true);
+        List<Console> specialConsoles = consoleRepository.findByIsOnSpecial(true);
+    
+        Map<String, Object> response = new HashMap<>();
+        
+        if (!specialGames.isEmpty()) {
+            Game game = specialGames.get(0);
+            double gameDiscount = game.getPrice() * 0.9;
+            response.put("gameId", game.getId());
+            response.put("gameTitle", game.getTitle());
+            response.put("gamePrice", game.getPrice());
+            response.put("gameDiscountedPrice", String.format("%.2f", gameDiscount));
+            response.put("gameIsOnSpecial", game.getIsOnSpecial());
+            response.put("gameManufacturer", game.getDeveloper());
+            response.put("gameImage", game.getImage());
+        }
+    
+        if (!specialConsoles.isEmpty()) {
+            Console console = specialConsoles.get(0);
+            double consoleDiscount = console.getPrice() * 0.9;
+            response.put("consoleId", console.getId());
+            response.put("consoleModel", console.getModel());
+            response.put("consolePrice", console.getPrice());
+            response.put("consoleDiscountedPrice", String.format("%.2f", consoleDiscount));
+            response.put("consoleIsOnSpecial", console.getIsOnSpecial());
+            response.put("consoleManufacturer", console.getManufacturer());
+            response.put("consoleImage", console.getImage());
+        }
+    
+        double totalDiscountedPrice = specialOfferService.getLastTotalDiscountedPrice();
+        response.put("totalDiscountedPrice", String.format("%.2f", totalDiscountedPrice));
+
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping(path="/trigger-special-offer")
+    public String triggerSpecialOffer() {
+    specialOfferService.createSpecialOfferNow();
+    return "Special offer generated.";
+}
     
 }
