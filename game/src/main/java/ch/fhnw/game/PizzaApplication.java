@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.game.business.service.CatalogService;
 import ch.fhnw.game.data.domain.Game;
+import ch.fhnw.game.data.domain.Accessory;
 import ch.fhnw.game.data.domain.Console;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.annotation.PostConstruct;
@@ -140,7 +141,7 @@ public class PizzaApplication {
         console.setModel("Xbox One");
         console.setManufacturer("Microsoft");
         console.setPrice(229.99);
-        console.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Immagine_Playstation_5.jpg/640px-Immagine_Playstation_5.jpg");
+        console.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Xbox-One-Console-wController-FL.jpg/640px-Xbox-One-Console-wController-FL.jpg");
         catalogService.addConsole(console);
 
         console = new Console();
@@ -156,6 +157,35 @@ public class PizzaApplication {
         console.setPrice(299.99);
         console.setImage("https://assets.xboxservices.com/assets/0b/28/0b2854b9-a7e7-47dd-b4f8-a371567854b2.png?n=Xbox-Series-S_Buy-Box_0_01_829x799.png");
         catalogService.addConsole(console);
+
+        Accessory accessory = new Accessory();
+        accessory.setType("Nintendo Switch Dock");
+        accessory.setManufacturer("Nintendo");
+        accessory.setPrice(89.99);
+        accessory.setImage("https://example.com/path/to/nintendo_switch_dock_image.jpg");
+        catalogService.addAccessory(accessory);
+
+        accessory = new Accessory();
+        accessory.setType("DualShock Charging Station");
+        accessory.setManufacturer("Sony");
+        accessory.setPrice(29.99);
+        accessory.setImage("https://example.com/path/to/dualshock_charging_station_image.jpg");
+        catalogService.addAccessory(accessory);
+
+        accessory = new Accessory();
+        accessory.setType("Xbox Wireless Controller");
+        accessory.setManufacturer("Microsoft");
+        accessory.setPrice(59.99);
+        accessory.setImage("https://example.com/path/to/xbox_wireless_controller_image.jpg");
+        catalogService.addAccessory(accessory);
+
+        accessory = new Accessory();
+        accessory.setType("PlayStation VR Headset");
+        accessory.setManufacturer("Sony");
+        accessory.setPrice(199.99);
+        accessory.setImage("https://example.com/path/to/playstation_vr_headset_image.jpg");
+        catalogService.addAccessory(accessory);
+
     }
 
 }

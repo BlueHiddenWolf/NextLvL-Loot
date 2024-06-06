@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import ch.fhnw.game.data.domain.Catalog;
 import ch.fhnw.game.data.domain.Console;
 import ch.fhnw.game.data.domain.Game;
+import ch.fhnw.game.data.domain.Accessory;
 import ch.fhnw.game.data.repository.GameRepository;
+import ch.fhnw.game.data.repository.AccessoryRepository;
 import ch.fhnw.game.data.repository.ConsoleRepository;
 
 @Service
@@ -21,6 +23,9 @@ public class CatalogService {
 
     @Autowired
     private ConsoleRepository consoleRepository;
+
+    @Autowired
+    private AccessoryRepository accessoryRepository;
 
     public Game findGameById(Long id) {
         try {
@@ -92,7 +97,7 @@ public class CatalogService {
             if (console.getModel() != null) updatedConsole.setModel(console.getModel());
             if (console.getManufacturer() != null) updatedConsole.setManufacturer(console.getManufacturer());
             if (console.getPrice() != null) updatedConsole.setPrice(console.getPrice());
-            if (console.getImage() != null) updatedConsole.setImage(console.getImage()); // Assuming consoles have images
+            if (console.getImage() != null) updatedConsole.setImage(console.getImage());
             return consoleRepository.save(updatedConsole);
         } else {
             throw new Exception("Console not found");
@@ -122,6 +127,57 @@ public class CatalogService {
 
     public List<Console> findConsolesByPriceRange(Double minPrice, Double maxPrice) {
         return consoleRepository.findByPriceBetween(minPrice, maxPrice);
+    }
+
+    public List<Accessory> findAllAccessories() {
+        return accessoryRepository.findAll();
+    }
+
+    public Accessory addAccessory(Accessory accessory) throws Exception {
+        if (accessory.getType() != null && accessoryRepository.findByType(accessory.getType()) == null) {
+            return accessoryRepository.save(accessory);
+        } else {
+            throw new Exception("Accessory already exists or type is null");
+        }
+    }
+
+    public Accessory updateAccessory(Long id, Accessory accessory) throws Exception {
+        Optional<Accessory> accessoryToUpdate = accessoryRepository.findById(id);
+        if (accessoryToUpdate.isPresent()) {
+            Accessory updatedAccessory = accessoryToUpdate.get();
+            if (accessory.getType() != null) updatedAccessory.setType(accessory.getType());
+            if (accessory.getManufacturer() != null) updatedAccessory.setManufacturer(accessory.getManufacturer());
+            if (accessory.getPrice() != null) updatedAccessory.setPrice(accessory.getPrice());
+            if (accessory.getImage() != null) updatedAccessory.setImage(accessory.getImage());
+            return accessoryRepository.save(updatedAccessory);
+        } else {
+            throw new Exception("Accessory not found");
+        }
+    }
+
+    public Accessory findAccessoryById(Long id) throws Exception {
+        Optional<Accessory> accessory = accessoryRepository.findById(id);
+        if (accessory.isPresent()) {
+            return accessory.get();
+        } else {
+            throw new Exception("Accessory with id " + id + " not found");
+        }
+    }
+
+    public void deleteAccessory(Long id) throws Exception {
+        if (accessoryRepository.existsById(id)) {
+            accessoryRepository.deleteById(id);
+        } else {
+            throw new Exception("Accessory not found");
+        }
+    }
+
+    public List<Accessory> findAccessoriesByManufacturer(String manufacturer) {
+        return accessoryRepository.findByManufacturer(manufacturer);
+    }
+
+    public List<Accessory> findAccessoriesByPriceRange(Double minPrice, Double maxPrice) {
+        return accessoryRepository.findByPriceBetween(minPrice, maxPrice);
     }
 
     // Business Logic to get current offer according to the category of the games

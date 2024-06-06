@@ -10,6 +10,7 @@ import ch.fhnw.game.business.service.CatalogService;
 import ch.fhnw.game.data.domain.Catalog;
 import ch.fhnw.game.data.domain.Game;
 import ch.fhnw.game.data.domain.Console;
+import ch.fhnw.game.data.domain.Accessory;
 
 import java.util.List;
 
@@ -105,6 +106,51 @@ public class CatalogController {
     public ResponseEntity<?> deleteConsole(@PathVariable Long id) {
         try {
             catalogService.deleteConsole(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping(path="/accessories/{id}", produces = "application/json")
+    public ResponseEntity<Accessory> getAccessoryById(@PathVariable Long id) {
+        try {
+            Accessory accessory = catalogService.findAccessoryById(id); 
+            return ResponseEntity.ok(accessory);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping(path="/accessories", produces = "application/json")
+    public List<Accessory> getAllAccessories() {
+        return catalogService.findAllAccessories();
+    }
+
+    @PostMapping(path="/accessories", consumes="application/json", produces = "application/json")
+    public ResponseEntity<Accessory> addAccessory(@RequestBody Accessory accessory) {
+        try {
+            Accessory savedAccessory = catalogService.addAccessory(accessory);
+            return ResponseEntity.ok(savedAccessory);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PutMapping(path="/accessories/{id}", consumes="application/json", produces = "application/json")
+    public ResponseEntity<Accessory> updateAccessory(@PathVariable Long id, @RequestBody Accessory accessory) {
+        try {
+            Accessory updatedAccessory = catalogService.updateAccessory(id, accessory);
+            return ResponseEntity.ok(updatedAccessory);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping(path="/accessories/{id}")
+    public ResponseEntity<?> deleteAccessory(@PathVariable Long id) {
+        try {
+            catalogService.deleteAccessory(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
