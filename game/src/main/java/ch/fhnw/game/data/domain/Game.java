@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "game")
@@ -20,6 +22,7 @@ public class Game {
     private Long id;
 
     @Column(name = "title")
+    @NotBlank(message = "Title must not be empty")
     private String title;
 
     @Column(name = "genre")
@@ -29,6 +32,7 @@ public class Game {
     private String developer;
 
     @Column(name = "price")
+    @NotNull(message = "Price must not be null")
     private Double price;
 
     @Column(name = "discountedPrice")

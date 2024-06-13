@@ -19,7 +19,7 @@ import jakarta.annotation.PostConstruct;
 @RestController
 @EnableScheduling
 @Hidden // Hide this controller from the Swagger UI
-public class PizzaApplication {
+public class GameApplication {
 
 	@Autowired
     private CatalogService catalogService;
@@ -28,7 +28,7 @@ public class PizzaApplication {
     private SpecialOfferService specialOfferService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(PizzaApplication.class, args);
+		SpringApplication.run(GameApplication.class, args);
 	}
 	
 

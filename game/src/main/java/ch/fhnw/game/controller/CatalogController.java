@@ -13,6 +13,7 @@ import ch.fhnw.game.data.domain.Game;
 import ch.fhnw.game.data.repository.AccessoryRepository;
 import ch.fhnw.game.data.repository.ConsoleRepository;
 import ch.fhnw.game.data.repository.GameRepository;
+import jakarta.validation.Valid;
 import ch.fhnw.game.data.domain.Console;
 import ch.fhnw.game.data.domain.Accessory;
 
@@ -56,7 +57,7 @@ public class CatalogController {
     }
 
     @PostMapping(path="/games", consumes="application/json", produces = "application/json")
-    public ResponseEntity addGame(@RequestBody Game game) {
+    public ResponseEntity addGame(@RequestBody @Valid Game game) {
         try {
             game = catalogService.addGame(game);
         } catch (Exception e) {
@@ -226,10 +227,11 @@ public class CatalogController {
         return ResponseEntity.ok(response);
     }
     
-    @GetMapping(path="/trigger-special-offer")
+
+@GetMapping(path="/trigger-special-offer")
     public String triggerSpecialOffer() {
     specialOfferService.createSpecialOfferNow();
     return "Special offer generated.";
-}
     
+    }
 }
