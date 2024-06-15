@@ -29,6 +29,11 @@ Admin View
 11.	As an Admin, I want a consistent user interface with easy navigation to efficiently manage inventory, offers, and sales without unnecessary complexity.
 12.	As an Admin, I want to ensure secure login capabilities, so that management operations are protected against unauthorized access.
 
+Use Cases
+
+<img width="254" alt="image" src="https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/55d9159b-e55e-41c0-8b16-bd61312cb852">
+
+
 User View
 -	UC-1 [View Games]: Users can browse through the entire catalog of games available in the Gameshop.
 -	UC-2 [View Consoles]: Users can view all available consoles in the Gameshop.
@@ -48,6 +53,11 @@ Wireframe
 The Wireframes we created in the beginning of the project was too ambitious for the scope of the project and the time we had to create it. In the future the website could look more similar to the wireframes but for that more time and resources are needed.
 The Wireframes below show the Homepage view of the website as well as the checkout view where the User can see the products added to the cart and proceed to the payment.
 
+<img width="231" alt="image" src="https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/3b7d83f7-9906-41a5-b2ee-50f415ff7805">
+
+<img width="263" alt="image" src="https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/e15dd925-6f55-417d-a670-7778fce5c4a5">
+
+
 Prototype Design
 The platform is designed to ensure a seamless experience across various devices. It utilizes a consistent visual theme for easy navigation.
 Domain Design
@@ -55,6 +65,7 @@ The domain encompasses entities like Games, Consoles, Accessories, each defined 
 Implementation
 Backend Technology
 The backend is developed on GitHub Codespaces using Spring Boot, integrated with Spring Data JPA for database interactions and H2 as the in-memory database to streamline development and testing phases.
+
 Frontend Technology
 The NextLvlLoot Gameshop is equipped with several key views on its frontend interface, each connected to specific backend APIs to fetch and manage data dynamically. Below is a description of each view and the corresponding APIs used:
 Games View
