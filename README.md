@@ -72,21 +72,27 @@ The domain encompasses entities like Games, Consoles, Accessories, each defined 
 Implementation
 
 Backend Technology
+
 The backend is developed on GitHub Codespaces using Spring Boot, integrated with Spring Data JPA for database interactions and H2 as the in-memory database to streamline development and testing phases.
 
 Frontend Technology
+
 The NextLvlLoot Gameshop is equipped with several key views on its frontend interface, each connected to specific backend APIs to fetch and manage data dynamically. Below is a description of each view and the corresponding APIs used:
 
 Games View
+
 The Games View is designed to present a comprehensive list of all games available in the shop. In this view, users can browse through an array of games, getting to see crucial details such as the title, genre, price, and availability. The data for the games is fetched from the API endpoint at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/games. This endpoint provides a detailed list of games stored in the backend database, ensuring users have access to the latest game releases and stock availability.
 
 Consoles View
+
 In the Consoles View, all gaming consoles available for purchase are displayed. This view allows users to explore various console options, providing detailed information such as the model, manufacturer, price, and specifications. Consoles information is retrieved from https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/consoles, which helps keep the display updated with the current stock levels and the latest releases in the gaming console market.
 
 Accessories View
+
 The Accessories View showcases a wide range of gaming accessories like controllers, headsets, and more, enhancing the gaming setup for enthusiasts. Users can explore different accessories through this view, where each item is detailed to aid in their purchasing decisions. The data for accessories is sourced from https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/accesories, listing all available accessories comprehensively.
 
 Login View
+
 The Login View secures access to administrative functionalities, crucial for maintaining the integrity and management of the inventory and sales data. This view is not just for admins but also allows users to log in to view their orders and access personal offers. Authentication processes are managed through https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/login, interfacing directly with the security backend to validate user credentials effectively.
 
 Discounts View
