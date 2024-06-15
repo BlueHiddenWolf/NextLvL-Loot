@@ -90,18 +90,22 @@ Login View
 The Login View secures access to administrative functionalities, crucial for maintaining the integrity and management of the inventory and sales data. This view is not just for admins but also allows users to log in to view their orders and access personal offers. Authentication processes are managed through https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/login, interfacing directly with the security backend to validate user credentials effectively.
 
 Discounts View
+
 The Discounts View is tailored to feature special offers and discounts on games and consoles, appealing to both casual shoppers and avid gamers. Both users and admins can access this view to explore weekly special offers, which might include discounts on bundles or individual products. These special offers are dynamically displayed and updated from the API at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/special-offers, ensuring the latest deals are always presented.
 
 Business Logic
+
 A significant feature includes a dynamic special offer system where a console and game package is randomly selected each week and offered at a 10% discount. This system encourages regular customer engagement and sales uplift.
 Path: [/api/catalog/special-offers]
 Method: GET
 
 Execution
+
 The application is hosted in GitHub Codespaces, facilitating continuous development and deployment. The frontend connects to backend services deployed dynamically within Codespaces, providing a real-time development environment that reflects changes instantly across the platform.
 This comprehensive setup ensures that NextLvlLoot remains a cutting-edge solution, perfectly aligning with the modern needs of an online gaming shop, while also providing robust management tools for the administrators.
 
 Project Management
+
 Roles
 •	Back-end Developer: Sander Bessems. Frederik Cefalà, Taoufik Brinis.
 •	Front-end Developer: Sander Bessems. Frederik Cefalà, Taoufik Brinis.
