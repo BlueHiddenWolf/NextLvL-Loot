@@ -105,7 +105,7 @@ Discounts View
 The Discounts View is tailored to feature special offers and discounts on games and consoles, appealing to both casual shoppers and avid gamers. Both users and admins can access this view to explore weekly special offers, which might include discounts on bundles or individual products. These special offers are dynamically displayed and updated from the API at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/special-offers, ensuring the latest deals are always presented.
 
 
-Developed using Budibase, the application can be accessed at https://inttech.budibase.app/app/nextlvloot.
+Developed using Budibase, the application can be accessed at [https://inttech.budibase.app/app/nextlvloot](https://lootbox.budibase.app/app/groupwork-basel-2-nextlvl-loot#/home).
 
 Business Logic
 
