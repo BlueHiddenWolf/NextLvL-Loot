@@ -1,4 +1,3 @@
-Documentation for Project: (README)
 Online Game Shop Project (NextLvlLoot)
 Introduction
 NextLvlLoot is a comprehensive online platform where customers can purchase games, consoles and accessories. The platform caters to both admins and users, offering a variety of functionalities tailored to their needs.
@@ -10,7 +9,7 @@ Contents:
 Analysis
 Scenario
 NextLvlLoot aims to replicate and enhance the traditional retail experience found in stores like GameStop, by providing an interactive and comprehensive online platform where customers can explore and purchase gaming-related products.
- 
+![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/54f6cc85-8c6f-4893-ac57-12d6e7597462)
 
 User Stories
 User View
@@ -27,17 +26,8 @@ Admin View
 10.	As an Admin, I want to use a responsive web application on various devices, ensuring I can manage the Gameshop inventory and sales from anywhere.
 11.	As an Admin, I want a consistent user interface with easy navigation to efficiently manage inventory, offers, and sales without unnecessary complexity.
 12.	As an Admin, I want to ensure secure login capabilities, so that management operations are protected against unauthorized access.
+![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/9d07e38e-6f4e-47b1-8b34-90df6ec31e35)
 
-
-
-
-
-
-
-
-
-Use Cases
- 
 User View
 -	UC-1 [View Games]: Users can browse through the entire catalog of games available in the Gameshop.
 -	UC-2 [View Consoles]: Users can view all available consoles in the Gameshop.
@@ -56,7 +46,7 @@ Design
 Wireframe
 The Wireframes we created in the beginning of the project was too ambitious for the scope of the project and the time we had to create it. In the future the website could look more similar to the wireframes but for that more time and resources are needed.
 The Wireframes below show the Homepage view of the website as well as the checkout view where the User can see the products added to the cart and proceed to the payment.
- 
+![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/5ee192f7-e24a-4978-a787-3ac717c2a31d)
 
 Prototype Design
 The platform is designed to ensure a seamless experience across various devices. It utilizes a consistent visual theme for easy navigation.
@@ -94,4 +84,4 @@ Milestones
 •	Development: Implementation of backend services and frontend interfaces.
 •	Integration: Linking frontend with backend APIs, ensuring functional coherence.
 •	Deployment and Testing: Final adjustments, deployment, and testing of the entire platform.
-![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/c6d80bad-8c95-49f9-9ac9-d0817b7b8dea)
+![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/b3542771-f3ac-4d8c-9365-c556916416c8)
