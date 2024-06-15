@@ -54,7 +54,9 @@ Admin View
 
 
 Design
+
 Wireframe
+
 The Wireframes we created in the beginning of the project was too ambitious for the scope of the project and the time we had to create it. In the future the website could look more similar to the wireframes but for that more time and resources are needed.
 The Wireframes below show the Homepage view of the website as well as the checkout view where the User can see the products added to the cart and proceed to the payment.
 
@@ -63,7 +65,10 @@ The Wireframes below show the Homepage view of the website as well as the checko
 <img width="263" alt="image" src="https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/e15dd925-6f55-417d-a670-7778fce5c4a5">
 
 
+
+
 Prototype Design
+
 The platform is designed to ensure a seamless experience across various devices. It utilizes a consistent visual theme for easy navigation.
 Domain Design
 The domain encompasses entities like Games, Consoles, Accessories, each defined with comprehensive attributes. These entities are interrelated, supporting the structured data required for the underlying business logic.
@@ -98,6 +103,9 @@ The Login View secures access to administrative functionalities, crucial for mai
 Discounts View
 
 The Discounts View is tailored to feature special offers and discounts on games and consoles, appealing to both casual shoppers and avid gamers. Both users and admins can access this view to explore weekly special offers, which might include discounts on bundles or individual products. These special offers are dynamically displayed and updated from the API at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/special-offers, ensuring the latest deals are always presented.
+
+
+Developed using Budibase, the application can be accessed at https://inttech.budibase.app/app/nextlvloot.
 
 Business Logic
 
