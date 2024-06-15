@@ -1,161 +1,97 @@
-# Pizzeria Reference Project (PizzaRP)
+Documentation for Project: (README)
+Online Game Shop Project (NextLvlLoot)
+Introduction
+NextLvlLoot is a comprehensive online platform where customers can purchase games, consoles and accessories. The platform caters to both admins and users, offering a variety of functionalities tailored to their needs.
+Contents:
+•	Analysis
+•	Design
+•	Implementation
+•	Project Management
+Analysis
+Scenario
+NextLvlLoot aims to replicate and enhance the traditional retail experience found in stores like GameStop, by providing an interactive and comprehensive online platform where customers can explore and purchase gaming-related products.
+ 
 
-This is a minimal Pizzeria Reference Project (PizzaRP) as a template for students. 
-
-[![License](https://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
-> 🚧: **This is a template project**: Make sure you adapt this documentation and the source code in this project according to your needs and use case. Comments are provided with "🚧:". Do not leave these comments in your final submission!
-
-#### Contents:
-- [Analysis](#analysis)
-  - [Scenario](#scenario)
-  - [User Stories](#user-stories)
-  - [Use Case](#use-case)
-- [Design](#design)
-  - [Prototype Design](#prototype-design)
-  - [Domain Design](#domain-design)
-  - [Business Logic](#business-logic)
-- [Implementation](#implementation)
-  - [Backend Technology](#backend-technology)
-  - [Frontend Technology](#frontend-technology)
-- [Project Management](#project-management)
-  - [Roles](#roles)
-  - [Milestones](#milestones)
-
-## Analysis
-> 🚧: You can reuse the analysis (you made) from other projects (e.g., requirement engineering), but it must be submitted according to the following template. 
-
-
-
-### Scenario
-
-PizzaRP (Pizzeria Reference Project) is the smallest possible and lightweight demonstration tool allowing the pizzaiolo (Role: Admin) to manage its pizza catalog. 
-
-### User Stories
-1. As an Admin, I want to have a Web app to use on different mobile devices and desktop computers.
-2. As an Admin, I want to see a consistent visual appearance to navigate easily, and it should look consistent.
-3. As an Admin, I want to use list views to explore and read my business data.
-4. As an Admin, I want to use edit and create views to maintain my business data.
-5. As an Admin, I want to log-in so that I can authenticate myself.
-6. As a User, I want to use list views so that I can access public pages.
-7. (Optional) As a User, I want to authenticate myself so that I can read my personal and confidential data.
-
-### Use Case
-
-![](images/use-case.png)
-
-- UC-1 [Show all the Pizza]: Admin can retrieve all the pizza on the menu
-- UC-2 [Show a Pizza]: Admin can retrieve the information on a specific pizza.
-- UC-3 [Edit a Pizza]: Admin can create, update, and delete pizzas from the menu.
-- UC-4 [Show Current Location Offer]: User can retrieve special menu by location
-
-## Design
-> 🚧: Keep in mind the Corporate Identity (CI); you shall decide appropriately the color schema, graphics, typography, layout, User Experience (UX), and so on.
-
-### Wireframe
-> 🚧: It is suggested to start with a wireframe. The wireframe focuses on the website structure (Sitemap planning), sketching the pages using Wireframe components (e.g., header, menu, footer) and UX. You can create a wireframe already with draw.io or similar tools. 
-
-Starting from the home page, we can visit different pages. Available public pages are visible in the menu...
-
-### Prototype
-> 🚧: A prototype can be designed using placeholder text/figures in Budibase. You don't need to connect the front-end to back-end in the early stages of the project development.
-
-### Domain Design
-> 🚧: Provide a picture and describe your domain model; you may use Entity-Relationship Model or UML class diagram. Both can be created in Visual Paradigm - we have an academic license for it.
-
-The `ch.fhnw.pizza.data.domain` package contains the following domain objects / entities including getters and setters:
-
-![](images/domain-model.png)
-
-### Business Logic 
-> 🚧: Describe the business logic for **at least one business service** in detail. If available, show the expected path and HTPP method. The remaining documentation of APIs shall be made available in the swagger endpoint. The default Swagger UI page is available at /swagger-ui.html.
-
-Based on the UC-4, there will be two offers and a standard offer. Given a location, a message is shown accordingly:
-
-- If the location is "Basel", the message is "10% off on all large pizzas!!!"
-- If the location is "Brugg", the message is "two for the price of One on all small pizzas!!!"
-- Otherwise, the message is "No special offer".
-
-**Path**: [`/api/menu/?location="Basel"`] 
-
-**Param**: `value="location"` Admitted value: "Basel","Brugg".
-
-**Method:** `GET`
-
-## Implementation
-> 🚧: Briefly describe your technology stack, which apps were used and for what.
-
-### Backend Technology
-> 🚧: It is suggested to clone this repository, but you are free to start from fresh with a Spring Initializr. If so, describe if there are any changes to the PizzaRP e.g., different dependencies, versions & etc... Please, also describe how your database is set up. If you want a persistent or in-memory H2 database check [link](https://github.com/FHNW-INT/Pizzeria_Reference_Project/blob/main/pizza/src/main/resources/application.properties). If you have placeholder data to initialize at the app, you may use a variation of the method **initPlaceholderData()** available at [link](https://github.com/FHNW-INT/Pizzeria_Reference_Project/blob/main/pizza/src/main/java/ch/fhnw/pizza/PizzaApplication.java).
-
-This Web application is relying on [Spring Boot](https://projects.spring.io/spring-boot) and the following dependencies:
-
-- [Spring Boot](https://projects.spring.io/spring-boot)
-- [Spring Data](https://projects.spring.io/spring-data)
-- [Java Persistence API (JPA)](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
-- [H2 Database Engine](https://www.h2database.com)
-
-To bootstrap the application, the [Spring Initializr](https://start.spring.io/) has been used.
-
-Then, the following further dependencies have been added to the project `pom.xml`:
-
-- DB:
-```XML
-<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-</dependency>
-```
-
-- SWAGGER:
-```XML
-   <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-      <version>2.3.0</version>
-   </dependency>
-```
-
-### Frontend Technology
-> 🚧: Describe your views and what APIs is used on which view. If you don't have access to the Internet Technology class Budibase environment(https://inttech.budibase.app/), please write to Devid on MS teams.
-
-This Web application was developed using Budibase and it is available for preview at https://inttech.budibase.app/app/pizzeria. 
-
-## Execution
-> 🚧: Please describe how to execute your app and what configurations must be changed to run it. 
-
-The codespace URL of this Repo is subject to change. Therefore, the Budibase PizzaRP webapp is not going to show any data in the view, when the URL is not updated or the codespace is offline. Follow these steps to start the webservice and reconnect the webapp to the new webservice url. 
-
-> 🚧: This is a shortened description for example purposes. A complete tutorial will be provided in a dedicated lecture.
-
-1. Clone PizzaRP in a new repository.
-2. Start your codespace (see video guide at: [link](https://www.youtube.com/watch?v=_W9B7qc9lVc&ab_channel=GitHub))
-3. Run the PizzaRP main available at PizzaApplication.java on your own codespace.
-4. Set your app with a public port, see the guide at [link](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace).
-5. Create an own Budibase app, you can export/import the existing Pizzeria app. Guide available at [link](https://docs.budibase.com/docs/export-and-import-apps).
-6. Update the pizzeria URL in the datasource and publish your app.
-
-## Project Management
-> 🚧: Include all the participants and briefly describe each of their **individual** contribution and/or roles. Screenshots/descriptions of your Kanban board or similar project management tools are welcome.
-
-### Roles
-- Back-end developer: Charuta Pande 
-- Front-end developer: Devid Montecchiari
-
-### Milestones
-1. **Analysis**: Scenario ideation, use case analysis and user story writing.
-2. **Prototype Design**: Creation of wireframe and prototype.
-3. **Domain Design**: Definition of domain model.
-4. **Business Logic and API Design**: Definition of business logic and API.
-5. **Data and API Implementation**: Implementation of data access and business logic layers, and API.
-6. **Security and Frontend Implementation**: Integration of security framework and frontend realisation.
-7. (optional) **Deployment**: Deployment of Web application on cloud infrastructure.
+User Stories
+User View
+1.	As a User, I want to view a comprehensive list of games, so I can choose my favorite games to purchase or explore.
+2.	As a User, I want to view all available consoles, so I can decide which console best suits my gaming needs.
+3.	As a User, I want to browse through available gaming accessories, enhancing my gaming experience with additional equipment.
+4.	As a User, I want to see the current weekly special offer, so I can take advantage of discounts on bundles that include games and consoles.
+5.	As a User, I want to add products to my shopping cart, so I can manage my purchases in one place before checking out.
+Admin View
+6.	As an Admin, I want to add, update, and delete games from our catalog, so that our game offerings are current and tailored to market demand.
+7.	As an Admin, I want to manage our console inventory by adding, updating, and deleting product listings to keep our stock up-to-date and appealing to customers.
+8.	As an Admin, I want to control our accessories inventory by adding new items, updating existing ones, and removing outdated products to maintain a competitive edge.
+9.	As an Admin, I want the ability to manually set up and modify weekly special offers, ensuring they are attractive and correctly priced to boost sales.
+10.	As an Admin, I want to use a responsive web application on various devices, ensuring I can manage the Gameshop inventory and sales from anywhere.
+11.	As an Admin, I want a consistent user interface with easy navigation to efficiently manage inventory, offers, and sales without unnecessary complexity.
+12.	As an Admin, I want to ensure secure login capabilities, so that management operations are protected against unauthorized access.
 
 
-#### Maintainer
-- Charuta Pande
-- Devid Montecchiari
 
-#### License
-- [Apache License, Version 2.0](blob/master/LICENSE)
+
+
+
+
+
+
+Use Cases
+ 
+User View
+-	UC-1 [View Games]: Users can browse through the entire catalog of games available in the Gameshop.
+-	UC-2 [View Consoles]: Users can view all available consoles in the Gameshop.
+-	UC-3 [View Accessories]: Users can browse through the selection of gaming accessories.
+-	UC-4 [View Weekly Special Offer]: Users can view the current special offer, which automatically updates each week to include a discounted console and game bundle.
+-	UC-5 [Add Product to Cart]: Users can add games, consoles, and accessories to their shopping cart for purchase.
+Admin View
+-	UC-6 [Manage Games]: Admins can add new games to the inventory, update existing game details, and delete games from the system.
+-	UC-7 [Manage Consoles]: Admins can add new consoles, update existing console details, and delete consoles from the inventory.
+-	UC-8 [Manage Accessories]: Admins can add, update, or remove accessories in the shop's inventory.
+-	UC-9 [Create Weekly Special Offer Manually]: Admins can manually create or update the weekly special offer ahead of the automated schedule.
+
+
+
+Design
+Wireframe
+The Wireframes we created in the beginning of the project was too ambitious for the scope of the project and the time we had to create it. In the future the website could look more similar to the wireframes but for that more time and resources are needed.
+The Wireframes below show the Homepage view of the website as well as the checkout view where the User can see the products added to the cart and proceed to the payment.
+ 
+
+Prototype Design
+The platform is designed to ensure a seamless experience across various devices. It utilizes a consistent visual theme for easy navigation.
+Domain Design
+The domain encompasses entities like Games, Consoles, Accessories, each defined with comprehensive attributes. These entities are interrelated, supporting the structured data required for the underlying business logic.
+Implementation
+Backend Technology
+The backend is developed on GitHub Codespaces using Spring Boot, integrated with Spring Data JPA for database interactions and H2 as the in-memory database to streamline development and testing phases.
+Frontend Technology
+The NextLvlLoot Gameshop is equipped with several key views on its frontend interface, each connected to specific backend APIs to fetch and manage data dynamically. Below is a description of each view and the corresponding APIs used:
+Games View
+The Games View is designed to present a comprehensive list of all games available in the shop. In this view, users can browse through an array of games, getting to see crucial details such as the title, genre, price, and availability. The data for the games is fetched from the API endpoint at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/games. This endpoint provides a detailed list of games stored in the backend database, ensuring users have access to the latest game releases and stock availability.
+Consoles View
+In the Consoles View, all gaming consoles available for purchase are displayed. This view allows users to explore various console options, providing detailed information such as the model, manufacturer, price, and specifications. Consoles information is retrieved from https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/consoles, which helps keep the display updated with the current stock levels and the latest releases in the gaming console market.
+Accessories View
+The Accessories View showcases a wide range of gaming accessories like controllers, headsets, and more, enhancing the gaming setup for enthusiasts. Users can explore different accessories through this view, where each item is detailed to aid in their purchasing decisions. The data for accessories is sourced from https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/accesories, listing all available accessories comprehensively.
+Login View
+The Login View secures access to administrative functionalities, crucial for maintaining the integrity and management of the inventory and sales data. This view is not just for admins but also allows users to log in to view their orders and access personal offers. Authentication processes are managed through https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/login, interfacing directly with the security backend to validate user credentials effectively.
+Discounts View
+The Discounts View is tailored to feature special offers and discounts on games and consoles, appealing to both casual shoppers and avid gamers. Both users and admins can access this view to explore weekly special offers, which might include discounts on bundles or individual products. These special offers are dynamically displayed and updated from the API at https://verbose-happiness-wrv9rgpvxjgr25pxg-8080.app.github.dev/catalog/special-offers, ensuring the latest deals are always presented.
+Business Logic
+A significant feature includes a dynamic special offer system where a console and game package is randomly selected each week and offered at a 10% discount. This system encourages regular customer engagement and sales uplift.
+Path: [/api/catalog/special-offers]
+Method: GET
+
+Execution
+The application is hosted in GitHub Codespaces, facilitating continuous development and deployment. The frontend connects to backend services deployed dynamically within Codespaces, providing a real-time development environment that reflects changes instantly across the platform.
+This comprehensive setup ensures that NextLvlLoot remains a cutting-edge solution, perfectly aligning with the modern needs of an online gaming shop, while also providing robust management tools for the administrators.
+Project Management
+Roles
+•	Back-end Developer: Sander Bessems. Frederik Cefalà, Taoufik Brinis.
+•	Front-end Developer: Sander Bessems. Frederik Cefalà, Taoufik Brinis.
+Milestones
+•	Initiation: Set up project infrastructure using GitHub Codespaces and Budibase.
+•	Development: Implementation of backend services and frontend interfaces.
+•	Integration: Linking frontend with backend APIs, ensuring functional coherence.
+•	Deployment and Testing: Final adjustments, deployment, and testing of the entire platform.
+![image](https://github.com/BlueHiddenWolf/NextLvL-Loot/assets/161600523/c6d80bad-8c95-49f9-9ac9-d0817b7b8dea)
